@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Franco Román Zaina — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F5F0;
+    --ink: #1A1A18;
+    --ink-light: #6B6B65;
+    --accent: #2D6A4F;
+    --accent-pale: #E8F5EE;
+    --border: #E0DDD6;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    padding: 80px 5vw 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-text { padding-right: 4rem; }
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.1s forwards;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.3s forwards;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .btn-primary:hover {
+    background: #235A40;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  /* HERO PHOTO */
+  .hero-photo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 0.9s 0.5s forwards;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: clamp(240px, 30vw, 360px);
+    aspect-ratio: 3/4;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    z-index: 0;
+  }
+
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 60%;
+    height: 60%;
+    background: var(--accent-pale);
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+    display: block;
+    background: var(--border);
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--border);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--ink-light);
+    font-size: 0.8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* SECTION COMMON */
+  section {
+    padding: 100px 5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 1rem;
+  }
+
+  /* DIVIDER */
+  .full-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0 5vw;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--ink-light);
+    font-weight: 300;
+    font-size: 1.05rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.85;
+  }
+
+  .about-text p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .about-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .fact {
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .fact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  /* SKILLS */
+  .skills-bg {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group h4 {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .project-type {
+    background: var(--accent-pale);
+    padding: 0.6rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .project-body {
+    padding: 1.5rem;
+  }
+
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-body p {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .link-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .link-btn.live {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+  }
+
+  .link-btn.live:hover {
+    background: #235A40;
+    border-color: #235A40;
+  }
+
+  /* EDUCATION */
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5px;
+  }
+
+  .edu-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: start;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-item:last-child { border-bottom: none; }
+
+  .edu-year {
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    font-weight: 300;
+    padding-top: 0.15rem;
+  }
+
+  .edu-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-place {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-weight: 300;
+  }
+
+  .edu-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .badge-done { background: var(--accent-pale); color: var(--accent); }
+  .badge-active { background: #FFF8E6; color: #B07D00; }
+
+  /* CONTACT */
+  .contact-bg {
+    background: var(--ink);
+    color: var(--white);
+    padding: 100px 5vw;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .contact-bg .section-title { color: var(--white); }
+  .contact-bg .section-num { color: #6BCB94; }
+  .contact-bg .section-line { background: #333; }
+
+  .contact-text {
+    font-size: 1.05rem;
+    color: #9A9A90;
+    font-weight: 300;
+    line-height: 1.85;
+    margin-top: 1.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid #2A2A28;
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .contact-link:hover {
+    border-color: #6BCB94;
+    background: rgba(107,203,148,0.05);
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+
+  .contact-link-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6B6B65;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-link-value {
+    font-size: 0.95rem;
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid #222;
+    padding: 1.5rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: #444;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
+    .hero-text { padding-right: 0; }
+    .hero-label { justify-content: center; }
+    .hero-bio { margin: 0 auto 2.5rem; }
+    .hero-cta { justify-content: center; }
+    .hero-photo-wrap { margin-top: 3rem; }
+    .photo-frame { width: 220px; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .edu-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">FRZ</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#educacion">Educación</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1200px;margin:0 auto;">
+  <section class="hero" style="padding-top:0;padding-bottom:0;">
+    <div class="hero-text">
+      <div class="hero-label">Disponible para trabajar · Remoto</div>
+      <h1>Franco<br><em>Román</em><br>Zaina</h1>
+      <p class="hero-bio">
+        Desarrollador web junior con foco en frontend y fullstack. Egresado de Informática en ORT y estudiante de Ciencias de la Computación en UBA. Ingles C1 en ORT.
+      </p>
+      <div class="hero-cta">
+        <a href="#proyectos" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          Ver proyectos
+        </a>
+        <a href="#contacto" class="btn btn-outline">Contactar</a>
+        <a href="cv-franco-zaina.pdf" download class="btn btn-outline">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          CV
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-frame">
+        <!-- REEMPLAZÁ "foto.jpg" con tu foto real -->
+          <div class="photo-frame">
+          <img src="image_0.png" alt="Franco Román Zaina - Desarrollador Fullstack">
+      </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="full-divider">
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Sobre mí</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>
+      </p>
+      <p>
+        Cuento con proyectos donde apliqué lógica basada en Hooks y estados dinámicos en el frontend, junto con el uso de ASP.NET Core MVC, SQL Server y Dapper para la gestión de datos en el backend. Asimismo, dispongo de repositorios con resoluciones de problemas lógicos en Python y programación funcional en Haskell, desarrollados como parte de mi formación académica.
+      </p>
+      <p>
+        Tengo un nivel de inglés avanzado (C1) alcanzado durante mi formación en ORT. <strong>Busco mi primera oportunidad laboral</strong> remota como desarrollador, con un esquema compatible con mi cursada universitaria.
+      </p>
+    </div>
+    <div class="about-facts reveal">
+      <div class="fact">
+        <div class="fact-label">Ubicación</div>
+        <div class="fact-value">Buenos Aires, Argentina</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Modalidad buscada</div>
+        <div class="fact-value">100% Remoto · Part-time</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Disponibilidad</div>
+        <div class="fact-value">4–6 hs diarias</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Intereses técnicos</div>
+        <div class="fact-value">Frontend · Fullstack · AI tools</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- SKILLS -->
+<div class="skills-bg">
+  <section id="skills">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <h4>Frontend</h4>
+        <div class="skill-tags">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Backend</h4>
+        <div class="skill-tags">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET MVC</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">JSON / REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Lenguajes</h4>
+        <div class="skill-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Haskell</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">C#</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Herramientas</h4>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Vercel</span>
+          <span class="tag">Visual Studio</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Conceptos</h4>
+        <div class="skill-tags">
+          <span class="tag">MVC</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Programación funcional</span>
+          <span class="tag">Bases de datos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="full-divider">
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Proyectos</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-type">React · API · Frontend</div>
+      <div class="project-body">
+        <h3>Flag Quest</h3>
+        <p>Trivia interactiva de banderas del mundo construida en React, con consumo de la API REST Countries en tiempo real. Diseño responsive y lógica de puntaje dinámica.</p>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">REST API</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Vercel</span>
+        </div>
+        <div class="project-links">
+          <a href="https://flag-quest-react.vercel.app/" target="_blank" class="link-btn live">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/francozaina/flag-quest-react" target="_blank" class="link-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-type">C# · MVC · Fullstack</div>
+      <div class="project-body">
+        <h3>Trivia Challenge</h3>
+        <p>Juego de trivia fullstack desarrollado con ASP.NET MVC y SQL Server. Incluye sistema de preguntas con base de datos relacional, manejo de sesiones y live demo desplegado.</p>
+        <div class="project-stack">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET MVC</span>
+          <span class="tag">SQL Server</span>
+          <span class="tag">HTML/CSS</span>
+        </div>
+        <div class="project-links">
+          <a href="http://francozaina-001-site1.mtempurl.com/" target="_blank" class="link-btn live">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/francozaina/trivia-challenge-mvc" target="_blank" class="link-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-type">Python · Lógica · Algoritmos</div>
+      <div class="project-body">
+        <h3>Ejercicios Python</h3>
+        <p>Colección de ejercicios de lógica y programación desarrollados para la materia Introducción a la Programación de UBA Exactas. Énfasis en resolución de problemas y fundamentos.</p>
+        <div class="project-stack">
+          <span class="tag">Python</span>
+          <span class="tag">Algoritmos</span>
+          <span class="tag">Estructuras de datos</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/francozaina/Ejercicios_Python" target="_blank" class="link-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Ver en GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-type">Haskell · Funcional · Algoritmos</div>
+      <div class="project-body">
+        <h3>Ejercicios Haskell</h3>
+        <p>Ejercicios de programación funcional pura en Haskell, desarrollados en UBA Exactas. Incluye recursión, tipos de datos algebraicos, funciones de orden superior y pattern matching.</p>
+        <div class="project-stack">
+          <span class="tag">Haskell</span>
+          <span class="tag">Prog. funcional</span>
+          <span class="tag">Recursión</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/francozaina/Ejercicios_Haskell" target="_blank" class="link-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Ver en GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- EDUCACIÓN -->
+<section id="educacion">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Educación</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="education-list">
+    <div class="edu-item reveal">
+      <div class="edu-year">2024 — presente</div>
+      <div>
+        <div class="edu-title">Lic. en Ciencias de la Computación</div>
+        <div class="edu-place">UBA Exactas — Universidad de Buenos Aires</div>
+        <div class="edu-place" style="margin-top:0.4rem;font-size:0.8rem;">CBC completo · Aprobado: Introducción a la Programación</div>
+      </div>
+      <span class="edu-badge badge-active">En curso</span>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-year">2023</div>
+      <div>
+        <div class="edu-title">Técnico en Informática</div>
+        <div class="edu-place">ORT Argentina</div>
+        <div class="edu-place" style="margin-top:0.4rem;font-size:0.8rem;">React · C# · ASP.NET MVC · SQL Server · JavaScript</div>
+      </div>
+      <span class="edu-badge badge-done">Egresado</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<div class="contact-bg" id="contacto">
+  <div class="contact-inner">
+    <div>
+      <div class="section-header reveal" style="margin-bottom:0">
+        <span class="section-num">05</span>
+        <h2 class="section-title">Contacto</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="contact-text reveal">
+        Estoy buscando mi primera experiencia laboral remota como desarrollador. Si tenés un proyecto o posición que encaje con mi perfil, me encontrás por acá.
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:tu-email@gmail.com" class="contact-link">
+        <div class="contact-icon" style="background:#1E3A2A;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6BCB94" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">fran.roman.zeta@gmail.com</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/franco-rom%C3%A1n-zaina-a2bb9a238/" target="_blank" class="contact-link">
+        <div class="contact-icon" style="background:#1A2A3A;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B9ECB" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">franco-román-zaina</span>
+        </div>
+      </a>
+      <a href="https://github.com/francozaina" target="_blank" class="contact-link">
+        <div class="contact-icon" style="background:#1A1A1A;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </div>
+        <div>
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">@francozaina</span>
+        </div>
+      </a>
+      <a href="cv-franco-zaina.pdf" download class="contact-link">
+        <div class="contact-icon" style="background:#2A1A1A;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CB6B6B" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div>
+          <span class="contact-link-label">Curriculum Vitae</span>
+          <span class="contact-link-value">Descargar CV (PDF)</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Franco Román Zaina</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
