@@ -632,6 +632,42 @@
     transform: translateY(0);
   }
 
+  /* LANG TOGGLE */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .lang-btn {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--ink-light);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.18s;
+    line-height: 1;
+  }
+
+  .lang-btn.active {
+    background: var(--accent);
+    color: var(--white);
+  }
+
+  .lang-btn:not(.active):hover {
+    color: var(--ink);
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
@@ -653,30 +689,34 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">FRZ</a>
-  <ul class="nav-links">
-    <li><a href="#sobre-mi">Sobre mí</a></li>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#educacion">Educación</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
+    <li><a href="#educacion" data-i18n="nav_education">Educación</a></li>
+    <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
   </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div style="max-width:1200px;margin:0 auto;">
   <section class="hero" style="padding-top:1;padding-bottom:0;">
     <div class="hero-text">
-      <div class="hero-label">Disponible para trabajar · Remoto</div>
+      <div class="hero-label" data-i18n="hero_label">Disponible para trabajar · Remoto</div>
       <h1>Franco<br><em>Román</em><br>Zaina</h1>
-      <p class="hero-bio">
+      <p class="hero-bio" data-i18n="hero_bio">
         Desarrollador web junior con foco en frontend y fullstack. Egresado de Informática en ORT y estudiante de Ciencias de la Computación en UBA. Inglés C1 en ORT.
       </p>
       <div class="hero-cta">
-        <a href="#proyectos" class="btn btn-primary">
+        <a href="#proyectos" class="btn btn-primary" data-i18n="hero_projects_btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           Ver proyectos
         </a>
-        <a href="#contacto" class="btn btn-outline">Contactar</a>
+        <a href="#contacto" class="btn btn-outline" data-i18n="hero_contact_btn">Contactar</a>
         <a href="cv-franco-zaina.pdf" download class="btn btn-outline">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           CV
@@ -700,36 +740,36 @@
 <section id="sobre-mi">
   <div class="section-header reveal">
     <span class="section-num">01</span>
-    <h2 class="section-title">Sobre mí</h2>
+    <h2 class="section-title" data-i18n="nav_about">Sobre mí</h2>
     <div class="section-line"></div>
   </div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>
+      <p data-i18n="about_p1">
         Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>
       </p>
-      <p>
+      <p data-i18n="about_p2">
         Cuento con proyectos donde apliqué lógica basada en Hooks y estados dinámicos en el frontend, junto con el uso de ASP.NET Core MVC, SQL Server y Dapper para la gestión de datos en el backend. Asimismo, dispongo de repositorios con resoluciones de problemas lógicos en Python y programación funcional en Haskell, desarrollados como parte de mi formación académica.
       </p>
-      <p>
+      <p data-i18n="about_p3">
         Tengo un nivel de inglés avanzado (C1) alcanzado durante mi formación en ORT. <strong>Busco mi primera oportunidad laboral</strong> remota como desarrollador, con un esquema compatible con mi cursada universitaria.
       </p>
     </div>
     <div class="about-facts reveal">
       <div class="fact">
-        <div class="fact-label">Ubicación</div>
+        <div class="fact-label" data-i18n="fact_location">Ubicación</div>
         <div class="fact-value">Buenos Aires, Argentina</div>
       </div>
       <div class="fact">
-        <div class="fact-label">Modalidad buscada</div>
-        <div class="fact-value">100% Remoto · Part-time</div>
+        <div class="fact-label" data-i18n="fact_mode">Modalidad buscada</div>
+        <div class="fact-value" data-i18n="fact_mode_val">100% Remoto · Part-time</div>
       </div>
       <div class="fact">
-        <div class="fact-label">Disponibilidad</div>
-        <div class="fact-value">4–6 hs diarias</div>
+        <div class="fact-label" data-i18n="fact_availability">Disponibilidad</div>
+        <div class="fact-value" data-i18n="fact_availability_val">4–6 hs diarias</div>
       </div>
       <div class="fact">
-        <div class="fact-label">Intereses técnicos</div>
+        <div class="fact-label" data-i18n="fact_interests">Intereses técnicos</div>
         <div class="fact-value">Frontend · Fullstack · AI tools</div>
       </div>
     </div>
@@ -748,7 +788,7 @@
     </div>
     <div class="skills-grid reveal">
       <div class="skill-group">
-        <h4>Frontend</h4>
+        <h4 data-i18n="skills_frontend">Frontend</h4>
         <div class="skill-tags">
           <span class="tag">React</span>
           <span class="tag">JavaScript</span>
@@ -761,12 +801,14 @@
         <div class="skill-tags">
           <span class="tag">C#</span>
           <span class="tag">ASP.NET MVC</span>
+          <span class="tag">Node.js</span>
           <span class="tag">SQL Server</span>
+          <span class="tag">Dapper</span>
           <span class="tag">JSON / REST APIs</span>
         </div>
       </div>
       <div class="skill-group">
-        <h4>Lenguajes</h4>
+        <h4 data-i18n="skills_languages">Lenguajes</h4>
         <div class="skill-tags">
           <span class="tag">Python</span>
           <span class="tag">Haskell</span>
@@ -775,7 +817,7 @@
         </div>
       </div>
       <div class="skill-group">
-        <h4>Herramientas</h4>
+        <h4 data-i18n="skills_tools">Herramientas</h4>
         <div class="skill-tags">
           <span class="tag">Git</span>
           <span class="tag">GitHub</span>
@@ -784,12 +826,12 @@
         </div>
       </div>
       <div class="skill-group">
-        <h4>Conceptos</h4>
+        <h4 data-i18n="skills_concepts">Conceptos</h4>
         <div class="skill-tags">
           <span class="tag">MVC</span>
           <span class="tag">REST APIs</span>
-          <span class="tag">Programación funcional</span>
-          <span class="tag">Bases de datos</span>
+          <span class="tag" data-i18n="tag_fp">Programación funcional</span>
+          <span class="tag" data-i18n="tag_db">Bases de datos</span>
         </div>
       </div>
     </div>
@@ -802,7 +844,7 @@
 <section id="proyectos">
   <div class="section-header reveal">
     <span class="section-num">03</span>
-    <h2 class="section-title">Proyectos</h2>
+    <h2 class="section-title" data-i18n="nav_projects">Proyectos</h2>
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
@@ -811,7 +853,7 @@
       <div class="project-type">React · API · Frontend</div>
       <div class="project-body">
         <h3>Flag Quest</h3>
-        <p>Trivia interactiva de banderas del mundo construida en React, con consumo de la API REST Countries en tiempo real. Diseño responsive y lógica de puntaje dinámica.</p>
+        <p data-i18n="proj_flagquest">Trivia interactiva de banderas del mundo construida en React, con consumo de la API REST Countries en tiempo real. Diseño responsive y lógica de puntaje dinámica.</p>
         <div class="project-stack">
           <span class="tag">React</span>
           <span class="tag">JavaScript</span>
@@ -824,7 +866,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Live Demo
           </a>
-          <a href="https://github.com/francozaina/flag-quest-react" target="_blank" class="link-btn">
+          <a href="https://github.com/francozaina/flag-quest-react" target="_blank" class="link-btn" data-i18n="btn_code">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             Código
           </a>
@@ -836,7 +878,7 @@
       <div class="project-type">C# · MVC · Fullstack</div>
       <div class="project-body">
         <h3>Trivia Challenge</h3>
-        <p>Juego de trivia fullstack desarrollado con ASP.NET MVC y SQL Server. Incluye sistema de preguntas con base de datos relacional, manejo de sesiones y live demo desplegado.</p>
+        <p data-i18n="proj_trivia">Juego de trivia fullstack desarrollado con ASP.NET MVC y SQL Server. Incluye sistema de preguntas con base de datos relacional, manejo de sesiones y live demo desplegado.</p>
         <div class="project-stack">
           <span class="tag">C#</span>
           <span class="tag">ASP.NET MVC</span>
@@ -848,7 +890,7 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             Live Demo
           </a>
-          <a href="https://github.com/francozaina/trivia-challenge-mvc" target="_blank" class="link-btn">
+          <a href="https://github.com/francozaina/trivia-challenge-mvc" target="_blank" class="link-btn" data-i18n="btn_code">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             Código
           </a>
@@ -857,17 +899,17 @@
     </div>
 
     <div class="project-card reveal">
-      <div class="project-type">Python · Lógica · Algoritmos</div>
+      <div class="project-type" data-i18n="proj_python_type">Python · Lógica · Algoritmos</div>
       <div class="project-body">
-        <h3>Ejercicios Python</h3>
-        <p>Colección de ejercicios de lógica y programación desarrollados para la materia Introducción a la Programación de UBA Exactas. Énfasis en resolución de problemas y fundamentos.</p>
+        <h3 data-i18n="proj_python_title">Ejercicios Python</h3>
+        <p data-i18n="proj_python">Colección de ejercicios de lógica y programación desarrollados para la materia Introducción a la Programación de UBA Exactas. Énfasis en resolución de problemas y fundamentos.</p>
         <div class="project-stack">
           <span class="tag">Python</span>
-          <span class="tag">Algoritmos</span>
-          <span class="tag">Estructuras de datos</span>
+          <span class="tag" data-i18n="tag_algo">Algoritmos</span>
+          <span class="tag" data-i18n="tag_ds">Estructuras de datos</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/francozaina/Ejercicios_Python" target="_blank" class="link-btn">
+          <a href="https://github.com/francozaina/Ejercicios_Python" target="_blank" class="link-btn" data-i18n="btn_github">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             Ver en GitHub
           </a>
@@ -876,17 +918,17 @@
     </div>
 
     <div class="project-card reveal">
-      <div class="project-type">Haskell · Funcional · Algoritmos</div>
+      <div class="project-type" data-i18n="proj_haskell_type">Haskell · Funcional · Algoritmos</div>
       <div class="project-body">
-        <h3>Ejercicios Haskell</h3>
-        <p>Ejercicios de programación funcional pura en Haskell, desarrollados en UBA Exactas. Incluye recursión, tipos de datos algebraicos, funciones de orden superior y pattern matching.</p>
+        <h3 data-i18n="proj_haskell_title">Ejercicios Haskell</h3>
+        <p data-i18n="proj_haskell">Ejercicios de programación funcional pura en Haskell, desarrollados en UBA Exactas. Incluye recursión, tipos de datos algebraicos, funciones de orden superior y pattern matching.</p>
         <div class="project-stack">
           <span class="tag">Haskell</span>
-          <span class="tag">Prog. funcional</span>
-          <span class="tag">Recursión</span>
+          <span class="tag" data-i18n="tag_fp_short">Prog. funcional</span>
+          <span class="tag" data-i18n="tag_recursion">Recursión</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/francozaina/Ejercicios_Haskell" target="_blank" class="link-btn">
+          <a href="https://github.com/francozaina/Ejercicios_Haskell" target="_blank" class="link-btn" data-i18n="btn_github">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             Ver en GitHub
           </a>
@@ -903,27 +945,27 @@
 <section id="educacion">
   <div class="section-header reveal">
     <span class="section-num">04</span>
-    <h2 class="section-title">Educación</h2>
+    <h2 class="section-title" data-i18n="nav_education">Educación</h2>
     <div class="section-line"></div>
   </div>
   <div class="education-list">
     <div class="edu-item reveal">
-      <div class="edu-year">2024 — presente</div>
+      <div class="edu-year" data-i18n="edu_uba_year">2024 — presente</div>
       <div>
-        <div class="edu-title">Lic. en Ciencias de la Computación</div>
+        <div class="edu-title" data-i18n="edu_uba_title">Lic. en Ciencias de la Computación</div>
         <div class="edu-place">UBA Exactas — Universidad de Buenos Aires</div>
-        <div class="edu-place" style="margin-top:0.4rem;font-size:0.8rem;">CBC completo · Aprobado: Introducción a la Programación</div>
+        <div class="edu-place" style="margin-top:0.4rem;font-size:0.8rem;" data-i18n="edu_uba_detail">CBC completo · Aprobado: Introducción a la Programación</div>
       </div>
-      <span class="edu-badge badge-active">En curso</span>
+      <span class="edu-badge badge-active" data-i18n="badge_active">En curso</span>
     </div>
     <div class="edu-item reveal">
       <div class="edu-year">2023</div>
       <div>
-        <div class="edu-title">Técnico en Informática</div>
+        <div class="edu-title" data-i18n="edu_ort_title">Técnico en Informática</div>
         <div class="edu-place">ORT Argentina</div>
         <div class="edu-place" style="margin-top:0.4rem;font-size:0.8rem;">React · C# · ASP.NET MVC · SQL Server · JavaScript</div>
       </div>
-      <span class="edu-badge badge-done">Egresado</span>
+      <span class="edu-badge badge-done" data-i18n="badge_done">Egresado</span>
     </div>
   </div>
 </section>
@@ -934,15 +976,15 @@
     <div>
       <div class="section-header reveal" style="margin-bottom:0">
         <span class="section-num">05</span>
-        <h2 class="section-title">Contacto</h2>
+        <h2 class="section-title" data-i18n="nav_contact">Contacto</h2>
         <div class="section-line"></div>
       </div>
-      <p class="contact-text reveal">
+      <p class="contact-text reveal" data-i18n="contact_text">
         Estoy buscando mi primera experiencia laboral remota como desarrollador. Si tenés un proyecto o posición que encaje con mi perfil, me encontrás por acá.
       </p>
     </div>
     <div class="contact-links reveal">
-      <a href="mailto:tu-email@gmail.com" class="contact-link">
+      <a href="mailto:fran.roman.zeta@gmail.com" class="contact-link">
         <div class="contact-icon" style="background:#1E3A2A;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6BCB94" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
@@ -974,9 +1016,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#CB6B6B" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
         <div>
-          <span class="contact-link-label">Curriculum Vitae</span>
-          <span class="contact-link-value">Descargar CV (PDF)</span>
+          <span class="contact-link-label" data-i18n="cv_label">Curriculum Vitae</span>
+          <span class="contact-link-value" data-i18n="cv_download">Descargar CV (PDF)</span>
         </div>
+        
       </a>
     </div>
   </div>
@@ -987,20 +1030,144 @@
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
+// ─── i18n ────────────────────────────────────────────────────────────────────
+const translations = {
+  es: {
+    nav_about:          'Sobre mí',
+    nav_projects:       'Proyectos',
+    nav_education:      'Educación',
+    nav_contact:        'Contacto',
+    hero_label:         'Disponible para trabajar · Remoto',
+    hero_bio:           'Desarrollador web junior con foco en frontend y fullstack. Egresado de Informática en ORT y estudiante de Ciencias de la Computación en UBA. Inglés C1 en ORT.',
+    hero_projects_btn:  'Ver proyectos',
+    hero_contact_btn:   'Contactar',
+    about_p1:           'Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>',
+    about_p2:           'Cuento con proyectos donde apliqué lógica basada en Hooks y estados dinámicos en el frontend, junto con el uso de ASP.NET Core MVC, SQL Server y Dapper para la gestión de datos en el backend. Asimismo, dispongo de repositorios con resoluciones de problemas lógicos en Python y programación funcional en Haskell, desarrollados como parte de mi formación académica.',
+    about_p3:           'Tengo un nivel de inglés avanzado (C1) alcanzado durante mi formación en ORT. <strong>Busco mi primera oportunidad laboral</strong> remota como desarrollador, con un esquema compatible con mi cursada universitaria.',
+    fact_location:      'Ubicación',
+    fact_mode:          'Modalidad buscada',
+    fact_mode_val:      '100% Remoto · Part-time',
+    fact_availability:  'Disponibilidad',
+    fact_availability_val: '4–6 hs diarias',
+    fact_interests:     'Intereses técnicos',
+    skills_frontend:    'Frontend',
+    skills_languages:   'Lenguajes',
+    skills_tools:       'Herramientas',
+    skills_concepts:    'Conceptos',
+    tag_fp:             'Programación funcional',
+    tag_db:             'Bases de datos',
+    proj_flagquest:     'Trivia interactiva de banderas del mundo construida en React, con consumo de la API REST Countries en tiempo real. Diseño responsive y lógica de puntaje dinámica.',
+    proj_trivia:        'Juego de trivia fullstack desarrollado con ASP.NET MVC y SQL Server. Incluye sistema de preguntas con base de datos relacional, manejo de sesiones y live demo desplegado.',
+    proj_python_type:   'Python · Lógica · Algoritmos',
+    proj_python_title:  'Ejercicios Python',
+    proj_python:        'Colección de ejercicios de lógica y programación desarrollados para la materia Introducción a la Programación de UBA Exactas. Énfasis en resolución de problemas y fundamentos.',
+    proj_haskell_type:  'Haskell · Funcional · Algoritmos',
+    proj_haskell_title: 'Ejercicios Haskell',
+    proj_haskell:       'Ejercicios de programación funcional pura en Haskell, desarrollados en UBA Exactas. Incluye recursión, tipos de datos algebraicos, funciones de orden superior y pattern matching.',
+    tag_algo:           'Algoritmos',
+    tag_ds:             'Estructuras de datos',
+    tag_fp_short:       'Prog. funcional',
+    tag_recursion:      'Recursión',
+    btn_code:           'Código',
+    btn_github:         'Ver en GitHub',
+    edu_uba_year:       '2024 — presente',
+    edu_uba_title:      'Lic. en Ciencias de la Computación',
+    edu_uba_detail:     'CBC completo · Aprobado: Introducción a la Programación',
+    badge_active:       'En curso',
+    edu_ort_title:      'Técnico en Informática',
+    badge_done:         'Egresado',
+    contact_text:       'Estoy buscando mi primera experiencia laboral remota como desarrollador. Si tenés un proyecto o posición que encaje con mi perfil, me encontrás por acá.',
+    cv_label:           'Curriculum Vitae',
+    cv_download:        'Descargar CV (PDF)',
+  },
+  en: {
+    nav_about:          'About',
+    nav_projects:       'Projects',
+    nav_education:      'Education',
+    nav_contact:        'Contact',
+    hero_label:         'Available for work · Remote',
+    hero_bio:           'Junior web developer focused on frontend and fullstack. Graduate in IT from ORT and Computer Science student at UBA. Advanced English (C1).',
+    hero_projects_btn:  'View projects',
+    hero_contact_btn:   'Contact me',
+    about_p1:           'I\'m <strong>Franco Román Zaina</strong>, a web developer with a solid academic and hands-on background. I graduated as an IT Technician from <strong>ORT Argentina</strong> in 2023, building real-world projects with React, C#, SQL Server, JavaScript and REST API integration, using .NET 8 for backend architecture. <strong>I\'m currently studying Computer Science at UBA (University of Buenos Aires)</strong>.',
+    about_p2:           'I have experience applying React Hooks and dynamic state management on the frontend, combined with ASP.NET Core MVC, SQL Server and Dapper for data handling on the backend. I also have repositories showcasing logical problem-solving in Python and functional programming in Haskell, developed as part of my academic training.',
+    about_p3:           'I have an advanced level of English (C1) obtained during my studies at ORT. <strong>I\'m looking for my first remote work experience</strong> as a developer, with a flexible schedule compatible with my university studies.',
+    fact_location:      'Location',
+    fact_mode:          'Work preference',
+    fact_mode_val:      '100% Remote · Part-time',
+    fact_availability:  'Availability',
+    fact_availability_val: '4–6 hours/day',
+    fact_interests:     'Technical interests',
+    skills_frontend:    'Frontend',
+    skills_languages:   'Languages',
+    skills_tools:       'Tools',
+    skills_concepts:    'Concepts',
+    tag_fp:             'Functional programming',
+    tag_db:             'Databases',
+    proj_flagquest:     'Interactive world flags trivia built in React, consuming the REST Countries API in real time. Responsive design with dynamic scoring logic.',
+    proj_trivia:        'Fullstack trivia game built with ASP.NET MVC and SQL Server. Features a relational database question system, session management, and a live deployed demo.',
+    proj_python_type:   'Python · Logic · Algorithms',
+    proj_python_title:  'Python Exercises',
+    proj_python:        'Collection of logic and programming exercises developed for the Introduction to Programming course at UBA Exactas. Emphasis on problem-solving and fundamentals.',
+    proj_haskell_type:  'Haskell · Functional · Algorithms',
+    proj_haskell_title: 'Haskell Exercises',
+    proj_haskell:       'Pure functional programming exercises in Haskell, developed at UBA Exactas. Covers recursion, algebraic data types, higher-order functions and pattern matching.',
+    tag_algo:           'Algorithms',
+    tag_ds:             'Data structures',
+    tag_fp_short:       'Functional prog.',
+    tag_recursion:      'Recursion',
+    btn_code:           'Source code',
+    btn_github:         'View on GitHub',
+    edu_uba_year:       '2024 — present',
+    edu_uba_title:      'B.S. in Computer Science',
+    edu_uba_detail:     'Foundation year completed · Passed: Introduction to Programming',
+    badge_active:       'In progress',
+    edu_ort_title:      'IT Technician',
+    badge_done:         'Graduate',
+    contact_text:       "I'm looking for my first remote work experience as a developer. If you have a project or position that fits my profile, reach out.",
+    cv_label:           'Curriculum Vitae',
+    cv_download:        'Download CV (PDF)',
+  }
+};
 
-</body>
-</html>
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Toggle button states
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Update nav anchor hrefs for scroll-to sections
+  const anchors = { nav_about: '#sobre-mi', nav_projects: '#proyectos', nav_education: '#educacion', nav_contact: '#contacto' };
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (anchors[key]) el.href = anchors[key];
+  });
+}
+
+// ─── Scroll reveal ─────────────────────────────────────────────────────────
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+</script>
