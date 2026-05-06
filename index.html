@@ -746,7 +746,7 @@
   <div class="about-grid">
     <div class="about-text reveal">
       <p data-i18n="about_p1">
-        Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>
+        Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, TypeScript, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>
       </p>
       <p data-i18n="about_p2">
         Cuento con proyectos donde apliqué lógica basada en Hooks y estados dinámicos en el frontend, junto con el uso de ASP.NET Core MVC, SQL Server y Dapper para la gestión de datos en el backend. Asimismo, dispongo de repositorios con resoluciones de problemas lógicos en Python y programación funcional en Haskell, desarrollados como parte de mi formación académica.
@@ -791,6 +791,7 @@
         <h4 data-i18n="skills_frontend">Frontend</h4>
         <div class="skill-tags">
           <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
           <span class="tag">JavaScript</span>
           <span class="tag">HTML5</span>
           <span class="tag">CSS3</span>
@@ -848,6 +849,34 @@
     <div class="section-line"></div>
   </div>
   <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-type">React · Node.js · AI · Fullstack</div>
+      <div class="project-body">
+        <h3>Ai.nance</h3>
+        <p data-i18n="proj_ainance">Aplicación web fullstack orientada a freelancers y trabajadores remotos. Incluye calculadora inteligente de comisiones, conversión de monedas en tiempo real, chatbot con IA, autenticación de usuarios y gestión financiera personal.</p>
+        <div class="project-stack">
+          <span class="tag">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Gemini AI</span>
+          <span class="tag">Tailwind</span>
+        </div>
+        <div class="project-links">
+          <a href="https://ainance-blond.vercel.app/" target="_blank" class="link-btn live">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="https://github.com/francozaina/ainance" target="_blank" class="link-btn" data-i18n="btn_code">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            Código
+          </a>
+        </div>
+      </div>
+    </div>
+
+
 
     <div class="project-card reveal">
       <div class="project-type">React · API · Frontend</div>
@@ -1041,7 +1070,7 @@ const translations = {
     hero_bio:           'Desarrollador web junior con foco en frontend y fullstack. Egresado de Informática en ORT y estudiante de Ciencias de la Computación en UBA. Inglés C1 en ORT.',
     hero_projects_btn:  'Ver proyectos',
     hero_contact_btn:   'Contactar',
-    about_p1:           'Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>',
+    about_p1:           'Soy <strong>Franco Román Zaina</strong>, desarrollador web con formación sólida tanto práctica como académica. Me recibí de Técnico en Informática en <strong>ORT Argentina</strong> en 2023, donde desarrollé proyectos reales con tecnologías como React, C#, SQL Server, TypeScript, JavaScript y la integración de APIs REST, utilizando .NET 8 para la arquitectura del backend. <strong>Actualmente curso la carrera de Ciencias de la Computación en la UBA</strong>',
     about_p2:           'Cuento con proyectos donde apliqué lógica basada en Hooks y estados dinámicos en el frontend, junto con el uso de ASP.NET Core MVC, SQL Server y Dapper para la gestión de datos en el backend. Asimismo, dispongo de repositorios con resoluciones de problemas lógicos en Python y programación funcional en Haskell, desarrollados como parte de mi formación académica.',
     about_p3:           'Tengo un nivel de inglés avanzado (C1) alcanzado durante mi formación en ORT. <strong>Busco mi primera oportunidad laboral</strong> remota como desarrollador, con un esquema compatible con mi cursada universitaria.',
     fact_location:      'Ubicación',
@@ -1057,6 +1086,7 @@ const translations = {
     tag_fp:             'Programación funcional',
     tag_db:             'Bases de datos',
     proj_flagquest:     'Trivia interactiva de banderas del mundo construida en React, con consumo de la API REST Countries en tiempo real. Diseño responsive y lógica de puntaje dinámica.',
+    proj_ainance:      'Aplicación web fullstack orientada a freelancers y trabajadores remotos. Incluye calculadora inteligente de comisiones, conversión de monedas en tiempo real, chatbot con IA, autenticación de usuarios y gestión financiera personal.',
     proj_trivia:        'Juego de trivia fullstack desarrollado con ASP.NET MVC y SQL Server. Incluye sistema de preguntas con base de datos relacional, manejo de sesiones y live demo desplegado.',
     proj_python_type:   'Python · Lógica · Algoritmos',
     proj_python_title:  'Ejercicios Python',
@@ -1089,7 +1119,7 @@ const translations = {
     hero_bio:           'Junior web developer focused on frontend and fullstack. Graduate in IT from ORT and Computer Science student at UBA. Advanced English (C1).',
     hero_projects_btn:  'View projects',
     hero_contact_btn:   'Contact me',
-    about_p1:           'I\'m <strong>Franco Román Zaina</strong>, a web developer with a solid academic and hands-on background. I graduated as an IT Technician from <strong>ORT Argentina</strong> in 2023, building real-world projects with React, C#, SQL Server, JavaScript and REST API integration, using .NET 8 for backend architecture. <strong>I\'m currently studying Computer Science at UBA (University of Buenos Aires)</strong>.',
+    about_p1:           'I\'m <strong>Franco Román Zaina</strong>, a web developer with a solid academic and hands-on background. I graduated as an IT Technician from <strong>ORT Argentina</strong> in 2023, building real-world projects with React, C#, SQL Server, TypeScript, JavaScript and REST API integration, using .NET 8 for backend architecture. <strong>I\'m currently studying Computer Science at UBA (University of Buenos Aires)</strong>.',
     about_p2:           'I have experience applying React Hooks and dynamic state management on the frontend, combined with ASP.NET Core MVC, SQL Server and Dapper for data handling on the backend. I also have repositories showcasing logical problem-solving in Python and functional programming in Haskell, developed as part of my academic training.',
     about_p3:           'I have an advanced level of English (C1) obtained during my studies at ORT. <strong>I\'m looking for my first remote work experience</strong> as a developer, with a flexible schedule compatible with my university studies.',
     fact_location:      'Location',
@@ -1105,6 +1135,7 @@ const translations = {
     tag_fp:             'Functional programming',
     tag_db:             'Databases',
     proj_flagquest:     'Interactive world flags trivia built in React, consuming the REST Countries API in real time. Responsive design with dynamic scoring logic.',
+    proj_ainance:      'Fullstack web application designed for freelancers and remote workers. Includes an intelligent fee calculator, real-time currency conversion, AI chatbot, user authentication, and personal finance management.',
     proj_trivia:        'Fullstack trivia game built with ASP.NET MVC and SQL Server. Features a relational database question system, session management, and a live deployed demo.',
     proj_python_type:   'Python · Logic · Algorithms',
     proj_python_title:  'Python Exercises',
